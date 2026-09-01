@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VivaMate — practice interviews with Ashmita, your transparent AI interviewer.">
+  <title>VivaMate · Interview with Ashmita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">V</span><div><b>VivaMate</b><small>Your AI Interview Coach</small></div></div>
+    <nav>
+      <button class="nav-item active"><span>◉</span> Interview</button>
+      <button class="nav-item" id="settingsNav"><span>⚙</span> Settings</button>
+    </nav>
+    <div class="sidebar-quote">“Better conversations.<br>Stronger you.”</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">AI INTERVIEW COACH</p><h1>Practice today. Perform tomorrow.</h1></div>
+      <div class="top-actions"><span class="pill"><i>✦</i> Powered by AI</span><span class="pill live-pill"><i>●</i> Real-time feedback</span><div class="profile">A</div></div>
+    </header>
+
+    <section class="dashboard" id="dashboard">
+      <section class="video-card">
+        <div class="video-top"><div class="interviewer-badge"><span class="live-dot"></span><div><b>Ashmita</b><small>AI Interviewer</small></div></div><div class="timer" id="timer">00:00</div></div>
+        <div class="avatar-stage" id="avatarStage">
+          <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+          <img id="avatarImage" src="/static/ashmita-avatar.png" alt="Ashmita AI interviewer avatar">
+          <div class="avatar-sheen"></div>
+          <div class="speech-caption" id="speechCaption">Hi, I’m Ashmita. Let’s make this feel like a real interview.</div>
+          <div class="speaking-indicator" id="speakingIndicator"><span></span><span></span><span></span><em>Speaking</em></div>
+        </div>
+        <div class="video-controls">
+          <button class="control" id="muteBtn">🔊 <span>Mute</span></button>
+          <button class="end" id="endBtn">● <span>End interview</span></button>
+          <button class="control" id="settingsBtn">⚙ <span>Settings</span></button>
+        </div>
+      </section>
+
+      <aside class="question-panel">
+        <div class="question-head"><div><span class="overline">CURRENT SESSION</span><h2 id="progressText">Question 1 of 5</h2></div><span class="percent" id="percent">20%</span></div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <div class="question-card">
+          <div class="question-type"><span>◉</span> Technical interview</div>
+          <h3 id="question">Can you tell me about a project you are proud of?</h3>
+          <button class="replay" id="speakBtn">◉ &nbsp;Replay question <kbd>R</kbd></button>
+        </div>
+        <div class="answer-tabs"><button class="tab active">Your answer</button><button class="tab" id="feedbackTab">AI feedback</button></div>
+        <div class="answer-card" id="answerCard">
+          <div class="answer-meta"><span id="answerState"><span class="record-dot"></span> Ready when you are</span><span id="wordCount">0 / 900 words</span></div>
+          <textarea id="answer" maxlength="6000" placeholder="Speak naturally or type your answer here…"></textarea>
+          <div class="answer-tools"><button class="mic" id="micBtn">🎙 <span>Speak answer</span></button><button class="submit" id="submitBtn">Get feedback <span>→</span></button></div>
+        </div>
+        <div class="feedback-card hidden" id="feedbackCard"><div class="feedback-heading"><span>✦</span> ASHMITA’S COACHING</div><h3 id="feedbackTitle">Strong start</h3><p id="feedbackText"></p><button class="next" id="nextBtn">Continue interview <span>→</span></button></div>
+        <div class="coach-note"><span>💡</span><div><b>Tip from Ashmita</b><p>Be specific. A concrete example is more memorable than a general claim.</p></div></div>
+      </aside>
+    </section>
+
+    <section class="welcome" id="welcome">
+      <div><span class="overline">MEET YOUR INTERVIEWER</span><h2>Ready to interview with <em>Ashmita?</em></h2><p>Ashmita will ask one question at a time, listen to your response, and coach you on the next improvement.</p><button class="start" id="startBtn">Start interview <span>→</span></button><small>AI-generated feedback · No account required</small></div>
+    </section>
+
+    <section class="complete hidden" id="complete"><div class="complete-icon">✓</div><span class="overline">SESSION COMPLETE</span><h2>Nice work. <em>Keep the momentum.</em></h2><p>You completed the full interview loop with Ashmita.</p><button class="start" id="againBtn">Practice again <span>→</span></button></section>
+
+    <section class="review-panel hidden" id="reviewPanel">
+      <div class="review-header">
+        <div>
+          <span class="overline">INTERVIEW ANALYTICS</span>
+          <h2>Performance snapshot</h2>
+        </div>
+        <button class="secondary" id="toggleReviewBtn" type="button">Hide summary</button>
+      </div>
+
+      <div class="analytics-grid">
+        <div class="overall-card">
+          <div class="overall-label">Overall readiness</div>
+          <div class="overall-score" id="overallScore">0%</div>
+          <div class="overall-badge" id="overallBadge">Reviewing…</div>
+        </div>
+        <div class="metric-list" id="analyticsList"></div>
+      </div>
+
+      <div class="focus-box">
+        <h3>Priority growth areas</h3>
+        <ul id="focusAreas"></ul>
+      </div>
+
+      <div class="qa-summary">
+        <div class="review-header qa-header">
+          <div>
+            <span class="overline">QUESTION REVIEW</span>
+            <h3>Q&amp;A recap</h3>
+          </div>
+        </div>
+        <div class="qa-list" id="qaList"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal hidden" id="settingsModal"><div class="modal-backdrop" id="modalBackdrop"></div><div class="modal-card"><div class="modal-header"><div><span class="overline">CONFIGURATION</span><h2>API Settings</h2></div><button id="closeSettings">×</button></div><p class="modal-intro">Enter your OpenAI API key to enable live AI feedback. Without a key, the app runs in demo mode.</p><label>OpenAI API Key<input id="apiKey" type="password" placeholder="sk-..."></label><div class="modal-actions"><button class="secondary" id="clearSettings">Clear</button><button class="save" id="saveSettings">Save</button></div><small class="security-note">✓ Keys stay in your browser localStorage only. Never shared with us.</small><div class="ai-suggestions"><h3>Free API Options</h3><ul><li><b>OpenAI:</b> $5 free credit (3 months)</li><li><b>Google Gemini:</b> Free tier with rate limits</li><li><b>Anthropic Claude:</b> Free tier available</li><li><b>Groq:</b> Free API with generous limits</li></ul></div></div></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
